@@ -13,7 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap
-//= require bootstrap-table/bootstrap-table
+//= require bootstrap-table
 //= require_tree .
 
 // var options = {
