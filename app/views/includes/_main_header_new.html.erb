@@ -1,0 +1,106 @@
+<div id='navbar-top' class="navbar navbar-top ">
+
+  <% if user_signed_in? %>
+    <% if current_page?('/shared_data')  or current_page?('/users') %>
+      <p class='fixFont user-logged-in'>logged in as <%= current_user.full_name %></p>
+    <% else %>
+      <p class='user-logged-in'>logged in as <%= current_user.full_name %></p>
+    <% end %>
+    <p class='user-info'>
+      <% if current_page?('/shared_data') or current_page?('/users')  %>
+        <%= link_to "Edit Profile", edit_user_registration_path, class: 'user-info' %>&nbsp;&nbsp;
+        <%= link_to "Sign out", edit_user_registration_path('sign-out'), class: 'user-info', :id => current_user %>
+      <% else %>
+        <%= link_to "Edit Profile", edit_user_registration_path %>&nbsp;&nbsp;
+        <%= link_to "Sign out", edit_user_registration_path('sign-out'), :id => current_user %>
+      <% end %>
+    </p>
+  <% else %>
+    <p class='user-info'>
+
+      <% if current_page?('/shared_data') or current_page?('/users')  %>
+        <%= link_to "Sign up", new_user_registration_path, class: 'user-info btn dropdown-toggle' %>
+        <%= link_to "Sign in", new_user_session_path, class: 'user-info btn dropdown-toggle' %>
+      <% else %>
+        <%= link_to "Sign up", new_user_registration_path, class: 'btn dropdown-toggle' %>
+        <%= link_to "Sign in", new_user_session_path, class: 'btn dropdown-toggle' %>
+      <% end %>
+    </p>
+  <% end %>
+</div>
+
+<nav class="navbar navbar-expand-lg">
+    <div class="navbar-header">
+    <%= link_to("https://www.ctti-clinicaltrials.org/", class: "navbar-brand") do %>
+      <%= image_tag("full_logo.jpg", class:"logo",  height: '120', width: '300') %>
+      <% end %>
+    </div>
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+      <% if current_page?('/shared_data') or current_page?('/users')  %>
+        <a href="/" class="navItem nav-link">
+      <% else %>
+        <a href="/" class="navItem nav-link">
+      <% end %>
+          <%= fa_icon("home") %>
+          Home
+        </a>
+      </li>
+      <li class="nav-item active">
+        <% if current_page?('/shared_data') or current_page?('/users')  %>
+          <a href="/connect" class="navItem nav-link">
+        <% else %>
+          <a href="/connect" class="navItem nav-link">
+        <% end %>
+            <%= fa_icon("plug") %>
+            Connect
+          </a>
+      </li>
+      <li class="nav-item active">
+        <% if current_page?('/shared_data') or current_page?('/users')  %>
+          <a href="/download" class="navItem nav-link">
+        <% else %>
+          <a href="/download" class="navItem nav-link">
+        <% end %>
+            <%= fa_icon("download") %>
+            Download
+          </a>
+      </li>
+      <li class="nav-item active">
+        <% if current_page?('/shared_data') or current_page?('/users')  %>
+          <a href="/learn_more" class="navItem nav-link">
+        <% else %>
+          <a href="/learn_more" class="navItem nav-link">
+        <% end %>
+            <%= fa_icon("university") %>
+            Learn
+          </a>
+      </li>
+      <li class="nav-item active">
+        <% if current_page?('/shared_data') or current_page?('/users')  %>
+          <a href="/shared_data" class="navItem nav-link">
+        <% else %>
+          <a href="/shared_data" class="navItem nav-link">
+        <% end %>
+          <%= fa_icon("briefcase") %>
+          Shared Data
+        </a>
+      </li>
+    </ul>
+</nav>
+
+
+<% if PublicAnnouncement.count > 0 %>
+  <section class='basicHero'>
+  <div class='copy announcement'>
+    <h1 class='announcement'>Announcement</h1>
+    <div class='wrap'>
+      <ul class='announcement'>
+        <% PublicAnnouncement.all.each do |announcement| %>
+          <li><%= announcement.description %></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+  </section>
+<% end %>
