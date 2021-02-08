@@ -20,7 +20,6 @@ gem "coderay"
 gem "recipient_interceptor"
 gem "sass-rails"
 gem "rubyzip", ">= 1.2.2"
-#gem "sprockets-rails",'>= 2.0'
 gem "sprockets", ">= 3.7.2"
 gem "title"
 gem "uglifier"
@@ -40,8 +39,6 @@ gem 'roo', '~> 2.4.0'
 gem 'string-similarity'
 gem 'gon'
 gem 'execjs'
-# gem 'therubyracer', '~> 0.12.3'
-# gem 'libv8', '~> 3.16.14.15'
 gem "loofah", ">= 2.2.3"
 gem 'rack'
 gem 'rack-cors', :require => 'rack/cors'
@@ -56,9 +53,6 @@ gem 'capistrano', '~> 3.8'
 gem 'capistrano-rails', '~> 1.2'
 
 group :development do
-#  gem "quiet_assets"
-#  gem "spring"
-#  gem "spring-commands-rspec"
   gem 'letter_opener'
 end
 
