@@ -114,6 +114,8 @@ module Util
       end
 
       Public::Study.connection.execute("grant read_only to \"#{username}\";")
+      Public::Study.connection.execute("grant usage on schema ctgov to \"#{username}\";")
+      Public::Study.connection.execute("grant select on all tables in schema ctgov to \"#{username}\";")
       Public::Study.connection.execute("alter role \"#{username}\" login;")
       Public::Study.connection.execute("alter role \"#{username}\" IN DATABASE aact set search_path = ctgov, mesh_archive #{project_schemas};")
       Public::Study.connection.execute("alter role \"#{username}\" IN DATABASE aact_alt set search_path = ctgov, mesh_archive #{project_schemas};")
